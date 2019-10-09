@@ -156,6 +156,11 @@ done;
 kubectl taint nodes `hostname` node-role.kubernetes.io/master:NoSchedule-
 ```
 
+## Make the proxy certificate available to the cluster
+```
+kubectl create secret generic proxy-cert --from-file=/etc/squid/certificates/ca.crt
+```
+
 ## Add read-only credentials to enable pulling new images
 ```
 kubectl create secret docker-registry gitlab-registry \
