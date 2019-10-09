@@ -16,8 +16,6 @@ apt install rabbitmq-server
 wget -qO - http://packages.diladele.com/diladele_pub.asc | apt-key add -
 echo 'deb [arch=amd64] http://squid48.diladele.com/ubuntu/ bionic main' | tee /etc/apt/sources.list.d/squid48.diladele.com.list
 apt install squid
-/usr/lib/squid/security_file_certgen -c -s /var/spool/squid/ssl_db -M 512MB
-cp etc/squid/recipe-radar.conf /etc/squid/conf.d/recipe-radar.conf
 
 add-apt-repository ppa:projectatomic/ppa
 apt install cri-o-1.15
@@ -69,10 +67,45 @@ systemctl restart systemd-networkd
 ```
 
 ## Configure service listen ports
-
-## Initialize a kubernetes cluster
 ```
-kubeadm init --apiserver-advertise-address=192.168.100.1 --pod-network-cidr=192.168.100.0/24
+vim /etc/elasticsearch/elasticsearch.yml
+...
+network.host: 192.168.100.1
+...
+discovery.seed_hosts: ["192.168.100.1"]
+...
+```
+
+```
+vim /etc/postgresql/*/main/pg_hba.conf
+...
+# TYPE  DATABASE        USER            ADDRESS                 METHOD
+host    all             all             10.0.0.0/8              trust
+...
+vim /etc/postgresql/*/main/postgresql.conf
+...
+listen_addresses = 'localhost, 192.168.100.1'
+...
+```
+
+```
+vim /etc/rabbitmq/rabbitmq-env.conf
+...
+NODE_IP_ADDRESS=192.168.100.1
+...
+vim /etc/rabbitmq/rabbitmq.conf
+...
+loopback_users = none
+...
+```
+
+```
+vim /etc/squid/squid.conf
+...
+http_port 192.168.100.1:3128
+...
+cp etc/squid/recipe-radar.conf /etc/squid/conf.d/recipe-radar.conf
+/usr/lib/squid/security_file_certgen -c -s /var/spool/squid/ssl_db -M 512MB
 ```
 
 ## Start system services
@@ -82,6 +115,11 @@ do
     systemctl enable ${service}.service
     systemctl restart ${service}.service
 done
+```
+
+## Initialize a kubernetes cluster
+```
+kubeadm init --apiserver-advertise-address=192.168.100.1 --pod-network-cidr=192.168.100.0/24
 ```
 
 ```
