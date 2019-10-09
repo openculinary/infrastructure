@@ -8,8 +8,6 @@ echo 'deb https://artifacts.elastic.co/packages/oss-7.x/apt stable main' | tee /
 apt install elasticsearch-oss
 
 apt install postgresql
-sudo -u postgres createuser api
-sudo -u postgres createdb api
 
 apt install rabbitmq-server
 
@@ -77,25 +75,25 @@ discovery.seed_hosts: ["192.168.100.1"]
 ```
 
 ```
+vim /etc/postgresql/*/main/postgresql.conf
+...
+listen_addresses = 'localhost, 192.168.100.1'
+...
 vim /etc/postgresql/*/main/pg_hba.conf
 ...
 # TYPE  DATABASE        USER            ADDRESS                 METHOD
 host    all             all             10.0.0.0/8              trust
 ...
-vim /etc/postgresql/*/main/postgresql.conf
-...
-listen_addresses = 'localhost, 192.168.100.1'
-...
 ```
 
 ```
-vim /etc/rabbitmq/rabbitmq-env.conf
-...
-NODE_IP_ADDRESS=192.168.100.1
-...
 vim /etc/rabbitmq/rabbitmq.conf
 ...
 loopback_users = none
+...
+vim /etc/rabbitmq/rabbitmq-env.conf
+...
+NODE_IP_ADDRESS=192.168.100.1
 ...
 ```
 
@@ -115,6 +113,12 @@ do
     systemctl enable ${service}.service
     systemctl restart ${service}.service
 done
+```
+
+## Initialize the application database
+```
+sudo -u postgres createuser api
+sudo -u postgres createdb api
 ```
 
 ## Initialize a kubernetes cluster
