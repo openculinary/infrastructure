@@ -169,15 +169,7 @@ kubectl create secret docker-registry gitlab-registry \
     --docker-password <password>
 ```
 
-## Deploy the application
-```
-kubectl create -f frontend-deployment.yml
-kubectl create -f frontend-service.yml
-kubectl create -f frontend-ingress.yml
-kubectl set image deployment/frontend-deployment frontend=registry.gitlab.com/openculinary/frontend:$(git rev-parse --short HEAD)
-```
-
-## Make a smoke test request to the application
+## Smoke test: Make a request to a deployed service
 ```
 PORT=$(kubectl -n ingress-nginx get svc --no-headers -o custom-columns=port:spec.ports[*].nodePort)
 curl -4 -H 'Host: frontend' localhost:${PORT}
