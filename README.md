@@ -140,11 +140,15 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
-## Configure pod networking and ingress
+## Configure kubernetes infrastructure
 ```
-kubectl apply -f k8s/networking/calico.yaml
-kubectl apply -f k8s/ingress/nginx-ingress-controller.yaml
-kubectl apply -f k8s/ingress/nginx-ingress-service.yaml
+for component in networking ingress services;
+do
+	for script in k8s/${component}/*;
+	do
+		kubectl apply -f ${script}
+	done;
+done;
 ```
 
 # Allow scheduling of application workloads on master
