@@ -98,9 +98,9 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 ## Configure pod networking and ingress
 ```
-kubectl apply -f cni/calico.yaml
-kubectl apply -f ingress/nginx-ingress-controller.yaml
-kubectl apply -f ingress/nginx-ingress-service.yaml
+kubectl apply -f k8s/networking/calico.yaml
+kubectl apply -f k8s/ingress/nginx-ingress-controller.yaml
+kubectl apply -f k8s/ingress/nginx-ingress-service.yaml
 ```
 
 # Allow scheduling of application workloads on master
