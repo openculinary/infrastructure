@@ -82,7 +82,7 @@ listen_addresses = '192.168.100.1'
 vim /etc/postgresql/*/main/pg_hba.conf
 ...
 # TYPE  DATABASE        USER            ADDRESS                 METHOD
-host    all             all             10.0.0.0/8              trust
+host    all             all             192.168.0.0/16          trust
 ...
 ```
 
