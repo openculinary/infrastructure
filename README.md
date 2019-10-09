@@ -65,6 +65,7 @@ Name=dummy0
 [Network]
 Address=192.168.100.1
 ...
+systemctl restart systemd-networkd
 ```
 
 ## Configure service listen ports
