@@ -15,6 +15,8 @@ wget -qO - http://packages.diladele.com/diladele_pub.asc | apt-key add -
 echo 'deb [arch=amd64] http://squid48.diladele.com/ubuntu/ bionic main' | tee /etc/apt/sources.list.d/squid48.diladele.com.list
 apt install squid
 
+apt install haproxy
+
 add-apt-repository ppa:projectatomic/ppa
 apt install cri-o-1.15
 
@@ -107,6 +109,11 @@ cp etc/squid/recipe-radar.conf /etc/squid/conf.d/recipe-radar.conf
 sh -x etc/squid/create-certificates.sh
 ```
 
+## Set up a local haproxy instance to route browser requests
+```
+cp etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg
+```
+
 ## Start system services
 ```
 for service in systemd-networkd elasticsearch postgresql rabbitmq-server squid crio kubelet;
@@ -169,8 +176,11 @@ kubectl create secret docker-registry gitlab-registry \
     --docker-password <password>
 ```
 
-## Smoke test: Make a request to a deployed service
+## Smoke tests
 ```
-PORT=$(kubectl -n ingress-nginx get svc --no-headers -o custom-columns=port:spec.ports[*].nodePort)
-curl -4 -H 'Host: frontend' localhost:${PORT}
+# Make a request to a deployed service
+curl -H 'Host: frontend' localhost:30080
+
+# Make a request via the Kubernetes ingress controller
+curl localhost
 ```
