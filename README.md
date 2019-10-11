@@ -149,12 +149,9 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 ## Configure kubernetes infrastructure
 ```
-for component in networking ingress services;
+for component in k8s/*;
 do
-	for script in k8s/${component}/*;
-	do
-		kubectl apply -f ${script}
-	done;
+	kubectl apply -f ${component}
 done;
 ```
 
