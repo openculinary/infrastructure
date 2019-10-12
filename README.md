@@ -104,7 +104,7 @@ vim /etc/squid/squid.conf
 ...
 http_port 192.168.100.1:3128
 ...
-cp etc/squid/recipe-radar.conf /etc/squid/conf.d/recipe-radar.conf
+cp etc/squid/conf.d/recipe-radar.conf /etc/squid/conf.d/recipe-radar.conf
 /usr/lib/squid/security_file_certgen -c -s /var/spool/squid/ssl_db -M 512MB
 sh -x etc/squid/create-certificates.sh
 ```
