@@ -10,3 +10,5 @@ subsets:
     port: 3128
   - name: https
     port: 3443
+  - name: https-private
+    port: 4118
