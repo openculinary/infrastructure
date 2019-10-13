@@ -5,9 +5,7 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-  - name: http
+  - name: standard
     port: 3128
-  - name: https
+  - name: private
     port: 3443
-  - name: https-private
-    port: 4118
