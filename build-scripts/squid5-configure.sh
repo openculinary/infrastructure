@@ -25,7 +25,7 @@
     --enable-security-cert-validators="fake" \
     --enable-storeid-rewrite-helpers="file" \
     --enable-url-rewrite-helpers="fake" \
-    --enable-eui \
+    --disable-eui \
     --enable-esi \
     --enable-icmp \
     --enable-zph-qos \
