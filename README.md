@@ -11,9 +11,9 @@ apt install postgresql
 
 apt install rabbitmq-server
 
-wget -qO - http://packages.diladele.com/diladele_pub.asc | apt-key add -
-echo 'deb [arch=amd64] http://squid48.diladele.com/ubuntu/ bionic main' | tee /etc/apt/sources.list.d/squid48.diladele.com.list
-apt install squid
+# obtain the latest squid5 source from http://www.squid-cache.org/Versions/v5/
+# build based on the configuration from build-scripts/squid5-configure.sh
+# make install
 
 apt install haproxy
 
