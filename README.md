@@ -165,14 +165,6 @@ kubectl taint nodes `hostname` node-role.kubernetes.io/master:NoSchedule-
 kubectl create secret generic proxy-cert --from-file=/etc/squid/certificates/ca.crt
 ```
 
-## Add read-only credentials to enable pulling new images
-```
-kubectl create secret docker-registry gitlab-registry \
-    --docker-server registry.gitlab.com \
-    --docker-username <username> \
-    --docker-password <password>
-```
-
 ## Smoke tests
 ```
 # Make a request to a deployed service
