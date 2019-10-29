@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: imageproxy
+  labels:
+    app: imageproxy
+spec:
+  selector:
+    matchLabels:
+      app: imageproxy
+      role: web
+  template:
+    metadata:
+      labels:
+        app: imageproxy
+        role: web
+    spec:
+      containers:
+      - image: willnorris/imageproxy:v0.9.0
+        imagePullPolicy: IfNotPresent
+        name: imageproxy
+        args:
+          - "-addr"
+          - "0.0.0.0:8080"
+          - "-cache"
+          - "memory"
+        ports:
+        - name: http
+          protocol: TCP
+          containerPort: 8080
+  replicas: 3
