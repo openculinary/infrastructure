@@ -1,5 +1,7 @@
 # RecipeRadar Infrastructure Setup
 
+This repository documents the steps required to set up a fresh RecipeRadar environment.
+
 ## Install dependencies
 
 ```
