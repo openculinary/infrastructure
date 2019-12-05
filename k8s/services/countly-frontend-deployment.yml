@@ -32,7 +32,7 @@ spec:
           timeoutSeconds: 3
         env:
           - name: COUNTLY_PLUGINS
-            value: "web,plugins,locale,browser,sources,views,logger,systemlogs,errorlogs,crashes,slipping-away-users,server-stats,times-of-day"
+            value: "web,plugins,locale,browser,sources,views,logger,systemlogs,errorlogs,crashes,slipping-away-users,server-stats,times-of-day,compliance-hub"
           - name: COUNTLY_CONFIG_API_FILESTORAGE
             value: gridfs
           - name: COUNTLY_CONFIG_API_MONGODB_HOST
