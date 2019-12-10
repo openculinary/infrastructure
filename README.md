@@ -123,6 +123,15 @@ cp etc/mongodb/mongodb.conf /etc/mongodb.conf
 cp etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg
 ```
 
+## Disable kubelet CSIMigration via feature flag
+```
+...
+featureGates:
+  CSIMigration: false
+```
+See [this issue](https://github.com/kubernetes/kubernetes/issues/86094) for
+details.
+
 ## Start system services
 ```
 for service in systemd-networkd elasticsearch postgresql rabbitmq-server squid mongodb haproxy crio kubelet;
