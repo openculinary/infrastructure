@@ -125,6 +125,7 @@ cp etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg
 
 ## Disable kubelet CSIMigration via feature flag
 ```
+vim /var/lib/kubelet/config.yaml
 ...
 featureGates:
   CSIMigration: false
