@@ -21,8 +21,9 @@ apt install mongodb-server
 
 apt install haproxy
 
-add-apt-repository ppa:projectatomic/ppa
-apt install cri-o-1.15
+wget -qO - https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_10/Release.key | sudo apt-key add -
+echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_10/ /' | tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
+apt install cri-o-1.17
 
 wget -qO - https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 echo 'deb http://apt.kubernetes.io/ kubernetes-xenial main' | tee /etc/apt/sources.list.d/kubernetes.list
