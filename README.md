@@ -37,6 +37,17 @@ vim /etc/crio/crio.conf
 cgroup_manager = "cgroupfs"
 ```
 
+# Configure container storage
+```
+vim /etc/containers/storage.conf
+...
+driver = "overlay"
+...
+additionalimagestores = [
+    "/home/{user}/.local/share/containers/storage/"
+]
+```
+
 # Enable ipv4 packet forwarding
 ```
 vim /etc/sysctl.d/99-sysctl.conf
