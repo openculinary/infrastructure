@@ -1,9 +1,0 @@
-kind: Endpoints
-apiVersion: v1
-metadata:
-  name: countly-api
-subsets:
-- addresses:
-  - ip: 192.168.100.1
-  ports:
-  - port: 3001
