@@ -30,11 +30,12 @@ echo 'deb http://apt.kubernetes.io/ kubernetes-xenial main' | tee /etc/apt/sourc
 apt install kubeadm
 ```
 
-## Configure cgroup management for crio
+## Configure crio
 ```
-vim /etc/crio/crio.conf
+vim /etc/default/crio
 ...
-cgroup_manager = "cgroupfs"
+RIO_CONFIG_OPTIONS="--cgroup-manager cgroupfs"
+CRIO_NETWORK_OPTIONS="--cni-config-dir /etc/cni/net.d"
 ```
 
 # Configure container storage
