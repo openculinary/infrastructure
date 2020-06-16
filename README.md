@@ -30,7 +30,7 @@ echo 'deb http://apt.kubernetes.io/ kubernetes-xenial main' | tee /etc/apt/sourc
 apt install kubeadm
 ```
 
-## Configure crio
+# Configure crio
 ```
 vim /etc/default/crio
 ...
