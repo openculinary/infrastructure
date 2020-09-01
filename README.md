@@ -32,10 +32,10 @@ apt install kubeadm
 
 # Configure crio
 ```
-vim /etc/default/crio
+vim /etc/crio/crio.conf
 ...
-RIO_CONFIG_OPTIONS="--cgroup-manager cgroupfs"
-CRIO_NETWORK_OPTIONS="--cni-config-dir /etc/cni/net.d"
+# Workaround: temporarily disable seccomp profile
+# seccomp_profile = "/usr/share/containers/seccomp.json"
 ```
 
 # Configure container storage
