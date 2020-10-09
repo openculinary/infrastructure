@@ -195,3 +195,33 @@ curl -H 'Host: frontend' localhost:30080
 # Make a request via the Kubernetes ingress controller
 curl localhost
 ```
+
+## Operations
+
+### Regenerate proxy certificate
+
+A self-signed `squid` proxy certificate is used so that outbound HTTPS (TLS) requests can perform verification against a certificate authority; albeit an internal one.  This does not provide security or integrity assurance - the proxy itself must perform verification on the requests that it makes.
+
+The certificate is provided as a generic file-readable secret to containers in the Kubernetes cluster so that client libraries in any language can use it.
+
+When the certificate expires, the following steps are required to regenerate and redistribute an updated certificate:
+
+```sh
+# Archive the existing certificates
+$ ARCHIVE_DATE=`date --reference /etc/squid/certificates/ca.crt '+%Y%m%d'`
+$ mkdir -p /etc/squid/certificates/archive/${ARCHIVE_DATE}/
+$ mv /etc/squid/certificates/ca.{crt,key} /etc/squid/certificates/archive/${ARCHIVE_DATE}/
+
+# Generate a new certificate signing key and certificate
+$ openssl genrsa -out /etc/squid/certificates/ca.key 4096
+$ openssl req -new -x509 -days 365 -key /etc/squid/certificates/ca.key -out /etc/squid/certificates/ca.crt
+
+# Cleanup
+$ unset ARCHIVE_DATE
+
+# Refresh the certificate material in the Kubernetes cluster
+$ kubectl delete secret generic proxy-cert
+$ kubectl add secret generic proxy-cert --from-file=/etc/squid/certificates/ca.crt
+```
+
+You will also need to rebuild and deploy affected services so that their container images are updated with the latest certificate material.
