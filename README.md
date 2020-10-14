@@ -198,6 +198,29 @@ curl localhost
 
 ## Operations
 
+### Upgrade Kubernetes Infrastructure
+
+Updated versions of the Kubernetes toolset (`kubeadm`, `kubectl`, `kubelet`) are released on a fairly regular basis.
+
+It is worth upgrading to stay current with the latest releases, but it's also important to test that the changes are safe before applying them to production; investigation and remediation of problems can take time.
+
+Follow the upgrade process below in a **development** environment before applying the same steps in production.
+
+```bash
+# Plan an upgrade
+$ sudo kubeadm upgrade plan
+
+# Apply the upgrade
+$ sudo kubeadm upgrade apply ...
+
+# Wait, and then ensure that containers are running and in a good state
+$ sleep 60
+$ kubectl get pods
+
+# Ensure that a non-critical service can deploy to the cluster
+$ make build && make deploy
+```
+
 ### Regenerate proxy certificate
 
 A self-signed `squid` proxy certificate is used so that outbound HTTPS (TLS) requests can perform verification against a certificate authority; albeit an internal one.  This does not provide security or integrity assurance - the proxy itself must perform verification on the requests that it makes.
