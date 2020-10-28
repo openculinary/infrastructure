@@ -24,7 +24,7 @@ The following disk layout is recommended:
 | | | PostgreSQL | | |
 | | | RabbitMQ | | |
 | | | Squid | | |
-| Ephemeral storage | Commodity disks >= 1TB | / | | N/A
+| Ephemeral storage | Commodity disks >= 1TB | | / | N/A
 | | | Operating system | | |
 | | | Kubernetes runtime | | |
 | | | Container storage | | |
