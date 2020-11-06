@@ -45,7 +45,7 @@ vim /etc/containers/storage.conf
 driver = "overlay"
 ...
 additionalimagestores = [
-    "/home/{user}/.local/share/containers/storage/"
+    "/mnt/ephemeral/containers/user-storage/"
 ]
 ```
 
