@@ -267,6 +267,12 @@ $ test -e /etc/ssl/private/reciperadar.com || cat /etc/letsencrypt/live/recipera
 $ systemctl restart haproxy
 ```
 
+As a good practice, we should also revoke the archived and no-longer-used TLS certificate so that if another party happened to obtain a copy of it, they would find it more difficult to impersonate the application during the remainder of the validity period.
+
+```bash
+$ certbot revoke --cert-path /etc/ssl/private/reciperadar.com.pem.YYYYqQ
+```
+
 ### Regenerate proxy certificate
 
 A self-signed `squid` proxy certificate is used so that outbound HTTPS (TLS) requests can perform verification against a certificate authority; albeit an internal one.  This does not provide security or integrity assurance - the proxy itself must perform verification on the requests that it makes.
