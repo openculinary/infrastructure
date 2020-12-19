@@ -267,7 +267,7 @@ $ test -e /etc/ssl/private/reciperadar.com || cat /etc/letsencrypt/live/recipera
 $ systemctl restart haproxy
 ```
 
-As a good practice, we should also revoke the archived and no-longer-used TLS certificate so that if another party happened to obtain a copy of it, they would find it more difficult to impersonate the application during the remainder of the validity period.
+As a good practice, we should also revoke the archived and no-longer-used TLS certificate so that even if another party happened to obtain a copy of the certificate's private key, they would find it more difficult to impersonate the application during the remainder of the validity period.
 
 ```bash
 $ certbot revoke --cert-path /etc/ssl/private/reciperadar.com.pem.YYYYqQ
