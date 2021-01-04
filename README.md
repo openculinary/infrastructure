@@ -35,6 +35,7 @@ apt install kubeadm
 vim /etc/crio/crio.conf
 ...
 # Workaround: temporarily disable seccomp profile
+# NB: This is not longer required for runc v1.0.0-rc92
 # seccomp_profile = "/usr/share/containers/seccomp.json"
 ```
 
