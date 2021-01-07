@@ -31,6 +31,13 @@ echo 'deb http://apt.kubernetes.io/ kubernetes-xenial main' | tee /etc/apt/sourc
 apt install kubeadm
 ```
 
+# Enable crio container seccomp profile
+```
+vim /etc/crio/crio.conf
+...
+seccomp_profile = "/usr/share/containers/seccomp.json"
+```
+
 # Configure container storage
 ```
 vim /etc/containers/storage.conf
