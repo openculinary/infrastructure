@@ -154,7 +154,9 @@ sudo -u postgres createuser api
 sudo -u postgres createdb api
 ```
 
-## Initialize a kubernetes cluster
+## Configure kubernetes cluster
+
+### Initialize cluster
 ```
 kubeadm init --apiserver-advertise-address=192.168.100.1 --pod-network-cidr=192.168.100.0/24
 ```
@@ -165,14 +167,14 @@ IMPORTANT: DROP YOUR PRIVILEGES AT THIS POINT
 Everything from this point onwards can be performed as an unprivileged user
 ```
 
-## Configure kubectl user access
+### Configure kubectl user access
 ```
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
-## Configure kubernetes infrastructure
+### Deploy kubernetes infrastructure components
 ```
 for component in k8s/*;
 do
@@ -180,17 +182,17 @@ do
 done;
 ```
 
-# Allow scheduling of application workloads on master
+### Remove scheduling constraint from host node
 ```
 kubectl taint nodes `hostname` node-role.kubernetes.io/master:NoSchedule-
 ```
 
-## Make the proxy certificate available to the cluster
+### Provide the proxy certificate to all cluster services
 ```
 kubectl create secret generic proxy-cert --from-file=/etc/squid/certificates/ca.crt
 ```
 
-## Smoke tests
+### Run smoke tests
 ```
 # Make a request to a deployed service
 curl -H 'Host: frontend' localhost:30080
