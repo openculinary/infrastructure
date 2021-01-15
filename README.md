@@ -2,7 +2,9 @@
 
 This repository documents the steps required to set up a fresh RecipeRadar environment.
 
-## Install dependencies
+## Configure host system
+
+### Install dependencies
 
 ```
 wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add -
@@ -29,14 +31,14 @@ echo 'deb http://apt.kubernetes.io/ kubernetes-xenial main' | tee /etc/apt/sourc
 apt install kubeadm
 ```
 
-# Enable crio container seccomp profile
+### Enable crio container seccomp profile
 ```
 vim /etc/crio/crio.conf
 ...
 seccomp_profile = "/usr/share/containers/seccomp.json"
 ```
 
-# Configure container storage
+### Configure container storage
 ```
 vim /etc/containers/storage.conf
 ...
@@ -47,7 +49,7 @@ additionalimagestores = [
 ]
 ```
 
-# Enable ipv4 packet forwarding
+### Enable ipv4 packet forwarding
 ```
 vim /etc/sysctl.d/99-sysctl.conf
 ...
@@ -56,13 +58,13 @@ net.ipv4.ip_forward=1
 sysctl --system
 ```
 
-# Install required kernel modules
+### Install required kernel modules
 ```
 echo br_netfilter >> /etc/modules
 echo dummy >> /etc/modules
 ```
 
-# Create a persistent dummy network interface
+### Create a persistent dummy network interface
 ```
 vim /etc/systemd/network/10-dummy0.netdev
 ...
