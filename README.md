@@ -81,7 +81,9 @@ Address=192.168.100.1
 systemctl restart systemd-networkd
 ```
 
-## Configure service listen ports
+## Configure services
+
+### Elasticsearch
 ```
 vim /etc/elasticsearch/elasticsearch.yml
 ...
@@ -92,6 +94,7 @@ discovery.seed_hosts: ["192.168.100.1"]
 script.painless.regex.enabled: false
 ```
 
+### PostgreSQL
 ```
 vim /etc/postgresql/*/main/postgresql.conf
 ...
@@ -104,6 +107,7 @@ host    all             all             192.168.0.0/16          trust
 ...
 ```
 
+### RabbitMQ
 ```
 vim /etc/rabbitmq/rabbitmq.conf
 ...
@@ -115,6 +119,7 @@ NODE_IP_ADDRESS=192.168.100.1
 ...
 ```
 
+### Squid
 ```
 vim /etc/squid/squid.conf
 ...
@@ -127,7 +132,7 @@ cp etc/squid/conf.d/recipe-radar.conf /etc/squid/conf.d/recipe-radar.conf
 sh -x etc/squid/create-certificates.sh
 ```
 
-## Set up a local haproxy instance to route browser requests
+### HAProxy
 ```
 cp etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg
 ```
