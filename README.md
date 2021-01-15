@@ -91,6 +91,7 @@ network.host: 192.168.100.1
 ...
 discovery.seed_hosts: ["192.168.100.1"]
 ...
+script.painless.regex.enabled: false
 ```
 
 ```
