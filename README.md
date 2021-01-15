@@ -17,8 +17,6 @@ apt install rabbitmq-server
 # build based on the configuration from build-scripts/squid5-configure.sh
 # make install
 
-apt install mongodb-server
-
 apt install haproxy
 
 wget -qO - https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_10/Release.key | sudo apt-key add -
@@ -129,11 +127,6 @@ cp etc/squid/conf.d/recipe-radar.conf /etc/squid/conf.d/recipe-radar.conf
 sh -x etc/squid/create-certificates.sh
 ```
 
-## Configure the local mongodb instance
-```
-cp etc/mongodb/mongodb.conf /etc/mongodb.conf
-```
-
 ## Set up a local haproxy instance to route browser requests
 ```
 cp etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg
@@ -141,7 +134,7 @@ cp etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg
 
 ## Start system services
 ```
-for service in systemd-networkd elasticsearch postgresql rabbitmq-server squid mongodb haproxy crio kubelet;
+for service in systemd-networkd elasticsearch postgresql rabbitmq-server squid haproxy crio kubelet;
 do
     systemctl enable ${service}.service
     systemctl restart ${service}.service
