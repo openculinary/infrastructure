@@ -261,7 +261,7 @@ In future it may be possible to configure `haproxy` to use separate certificate 
 
 ```bash
 # Archive the existing certificate keyfile
-$ mv /etc/ssl/private /etc/ssl/private/reciperadar.com.pem.YYYYqQ
+$ mv /etc/ssl/private/reciperadar.com.pem /etc/ssl/private/reciperadar.com.pem.YYYYqQ
 
 # Concatenate a generated certificate keyfile
 $ test -e /etc/ssl/private/reciperadar.com || cat /etc/letsencrypt/live/reciperadar.com/{fullchain,privkey}.pem > /etc/ssl/private/reciperadar.com.pem
