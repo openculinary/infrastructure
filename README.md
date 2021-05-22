@@ -158,7 +158,7 @@ sudo -u postgres createdb api
 
 ### Initialize cluster
 ```
-kubeadm init --apiserver-advertise-address=192.168.100.1 --pod-network-cidr=192.168.100.0/24
+kubeadm init --apiserver-advertise-address=192.168.100.1 --pod-network-cidr=172.16.0.0/12
 ```
 
 ```
