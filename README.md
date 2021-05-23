@@ -105,7 +105,8 @@ listen_addresses = '192.168.100.1'
 vim /etc/postgresql/*/main/pg_hba.conf
 ...
 # TYPE  DATABASE        USER            ADDRESS                 METHOD
-host    all             all             192.168.0.0/16          trust
+host    api             api             192.168.100.1/32        trust
+host    api             api             172.16.0.0/12           trust
 ...
 ```
 
