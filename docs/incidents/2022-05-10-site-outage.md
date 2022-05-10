@@ -2,12 +2,12 @@
 
 ## What happened?
 
-13:48 - A cat climbed onto the server and set foot on the power button on top of the case
-13:48 - Network services providing the production site were gracefully shutdown
-13:48 - The production system halted after graceful shutdown of all system services
-13:49 - The power button on the server was pressed again manually (by a human)
-13:50 - Network services providing the production site completed startup
-13:54 - A manual visit to the production site confirmed that it was operational again
+- 13:48 - A cat climbed onto the server and set foot on the power button on top of the case
+- 13:48 - Network services providing the production site were gracefully shutdown
+- 13:48 - The production system halted after graceful shutdown of all system services
+- 13:49 - The power button on the server was pressed again manually (by a human)
+- 13:50 - Network services providing the production site completed startup
+- 13:54 - A manual visit to the production site confirmed that it was operational again
 
 ## What went well?
 
