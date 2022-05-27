@@ -23,7 +23,7 @@ apt install haproxy
 
 wget -qO - https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_11/Release.key | sudo apt-key add -
 echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_11/ /' | tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
-echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/1.20/Debian_11/ /' | tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
+echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/1.24/Debian_11/ /' | tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
 apt install cri-o
 
 wget -qO - https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
