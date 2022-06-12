@@ -61,7 +61,6 @@ sysctl --system
 ### Install required kernel modules
 ```
 echo br_netfilter >> /etc/modules
-echo dummy >> /etc/modules
 ```
 
 ### Create a persistent dummy network interface
