@@ -15,9 +15,7 @@ apt install postgresql
 
 apt install rabbitmq-server
 
-# obtain the latest squid5 source from http://www.squid-cache.org/Versions/v5/
-# build based on the configuration from build-scripts/squid5-configure.sh
-# make install
+apt install squid-openssl
 
 apt install haproxy
 
