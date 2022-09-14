@@ -263,7 +263,7 @@ In future it may be possible to configure `haproxy` to use separate certificate 
 $ mv /etc/ssl/private/reciperadar.com.pem /etc/ssl/private/reciperadar.com.pem.YYYYqQ
 
 # Concatenate a generated certificate keyfile
-$ test -e /etc/ssl/private/reciperadar.com || cat /etc/letsencrypt/live/reciperadar.com/{fullchain,privkey}.pem > /etc/ssl/private/reciperadar.com.pem
+$ test -e /etc/ssl/private/reciperadar.com.pem || cat /etc/letsencrypt/live/reciperadar.com/{fullchain,privkey}.pem > /etc/ssl/private/reciperadar.com.pem
 
 # Restart the web server
 $ systemctl restart haproxy
