@@ -75,7 +75,18 @@ vim /etc/systemd/network/20-dummy0.network
 Name=dummy0
 
 [Network]
-Address=192.168.100.1
+Address=192.168.100.1/32
+Address=fe80::0100:0001/128
+DHCP=no
+IPv6AcceptRA=no
+...
+vim /etc/systemd/network/30-dummy0.link
+...
+[Match]
+OriginalName=dummy0
+
+[Link]
+MACAddressPolicy=random
 ...
 systemctl restart systemd-networkd
 ```
@@ -97,11 +108,12 @@ script.painless.regex.enabled: false
 ```
 vim /etc/postgresql/*/main/postgresql.conf
 ...
-listen_addresses = '192.168.100.1'
+listen_addresses = '192.168.100.1,fe80::0100:0001%dummy0'
 ...
 vim /etc/postgresql/*/main/pg_hba.conf
 ...
 # TYPE  DATABASE        USER            ADDRESS                 METHOD
+host    api             api             fe80::0100:0001/128     trust
 host    api             api             192.168.100.1/32        trust
 host    api             api             172.16.0.0/12           trust
 ...
