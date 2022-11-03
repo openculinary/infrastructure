@@ -1,10 +1,12 @@
-# RecipeRadar Infrastructure Setup
+# RecipeRadar Infrastructure
 
-This repository documents the steps required to set up a fresh RecipeRadar environment.
+## Installation
 
-## Configure host system
+This section documents the steps required to set up a fresh RecipeRadar environment.
 
-### Install dependencies
+### Configure host system
+
+#### Install dependencies
 
 ```
 wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add -
@@ -29,14 +31,14 @@ echo 'deb http://apt.kubernetes.io/ kubernetes-xenial main' | tee /etc/apt/sourc
 apt install kubeadm
 ```
 
-### Enable crio container seccomp profile
+#### Enable crio container seccomp profile
 ```
 vim /etc/crio/crio.conf
 ...
 seccomp_profile = "/usr/share/containers/seccomp.json"
 ```
 
-### Configure container storage
+#### Configure container storage
 ```
 vim /etc/containers/storage.conf
 ...
@@ -49,7 +51,7 @@ additionalimagestores = [
 ]
 ```
 
-### Enable ipv4 packet forwarding
+#### Enable ipv4 packet forwarding
 ```
 vim /etc/sysctl.d/99-sysctl.conf
 ...
@@ -58,12 +60,12 @@ net.ipv4.ip_forward=1
 sysctl --system
 ```
 
-### Install required kernel modules
+#### Install required kernel modules
 ```
 echo br_netfilter >> /etc/modules
 ```
 
-### Create a persistent dummy network interface
+#### Create a persistent dummy network interface
 ```
 vim /etc/systemd/network/10-dummy0.netdev
 ...
@@ -93,9 +95,9 @@ MACAddressPolicy=random
 systemctl restart systemd-networkd
 ```
 
-## Configure services
+### Configure services
 
-### Elasticsearch
+#### Elasticsearch
 ```
 vim /etc/elasticsearch/elasticsearch.yml
 ...
@@ -106,7 +108,7 @@ discovery.seed_hosts: ["192.168.100.1"]
 script.painless.regex.enabled: false
 ```
 
-### PostgreSQL
+#### PostgreSQL
 ```
 vim /etc/postgresql/*/main/postgresql.conf
 ...
@@ -121,7 +123,7 @@ host    api             api             172.16.0.0/12           trust
 ...
 ```
 
-### RabbitMQ
+#### RabbitMQ
 ```
 vim /etc/rabbitmq/rabbitmq.conf
 ...
@@ -133,7 +135,7 @@ NODE_IP_ADDRESS=192.168.100.1
 ...
 ```
 
-### Squid
+#### Squid
 ```
 vim /etc/squid/squid.conf
 ...
@@ -146,12 +148,12 @@ cp etc/squid/conf.d/recipe-radar.conf /etc/squid/conf.d/recipe-radar.conf
 sh -x etc/squid/create-certificates.sh
 ```
 
-### HAProxy
+#### HAProxy
 ```
 cp etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg
 ```
 
-## Start system services
+### Start system services
 ```
 for service in systemd-networkd elasticsearch postgresql rabbitmq-server squid haproxy crio kubelet;
 do
@@ -160,15 +162,15 @@ do
 done
 ```
 
-## Initialize the application database
+### Initialize the application database
 ```
 sudo -u postgres createuser api
 sudo -u postgres createdb api
 ```
 
-## Configure kubernetes cluster
+### Configure kubernetes cluster
 
-### Initialize cluster
+#### Initialize cluster
 ```
 kubeadm init --apiserver-advertise-address=192.168.100.1 --pod-network-cidr=172.16.0.0/12
 ```
@@ -179,14 +181,14 @@ IMPORTANT: DROP YOUR PRIVILEGES AT THIS POINT
 Everything from this point onwards can be performed as an unprivileged user
 ```
 
-### Configure kubectl user access
+#### Configure kubectl user access
 ```
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
-### Deploy kubernetes infrastructure components
+#### Deploy kubernetes infrastructure components
 ```
 for component in k8s/*;
 do
@@ -194,18 +196,18 @@ do
 done;
 ```
 
-### Remove scheduling constraint from host node
+#### Remove scheduling constraint from host node
 ```
 kubectl taint nodes `hostname` node-role.kubernetes.io/control-plane:NoSchedule-
 kubectl taint nodes `hostname` node-role.kubernetes.io/master:NoSchedule-
 ```
 
-### Provide the proxy certificate to all cluster services
+#### Provide the proxy certificate to all cluster services
 ```
 kubectl create secret generic proxy-cert --from-file=/etc/squid/certificates/ca.crt
 ```
 
-### Run smoke tests
+#### Run smoke tests
 ```
 # Make a request to a deployed service
 curl -H 'Host: frontend' localhost:30080
