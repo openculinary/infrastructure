@@ -301,7 +301,7 @@ When the certificate expires, the following steps are required to regenerate and
 
 ```sh
 # Archive the existing certificates
-$ ARCHIVE_DATE=`date --reference /etc/squid/certificates/ca.crt '+%Y%m%d'`
+$ ARCHIVE_DATE=$(date --reference /etc/squid/certificates/ca.crt '+%Y%m%d')
 $ mkdir -p /etc/squid/certificates/archive/${ARCHIVE_DATE}/
 $ mv /etc/squid/certificates/ca.{crt,key} /etc/squid/certificates/archive/${ARCHIVE_DATE}/
 
