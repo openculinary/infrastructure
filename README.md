@@ -314,7 +314,7 @@ $ unset ARCHIVE_DATE
 
 # Refresh the certificate material in the Kubernetes cluster
 $ kubectl delete secret generic proxy-cert
-$ kubectl add secret generic proxy-cert --from-file=/etc/squid/certificates/ca.crt
+$ kubectl create secret generic proxy-cert --from-file=/etc/squid/certificates/ca.crt
 ```
 
 You will also need to rebuild and deploy affected services so that their container images are updated with the latest certificate material.
