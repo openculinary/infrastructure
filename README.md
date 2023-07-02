@@ -244,6 +244,8 @@ Messages to all three mailing lists are delivered to a software application call
 
 The RecipeRadar mailing list `git` repositories are published at https://git.reciperadar.com/ and this allows users, developers, contributors, archivists and others to collect copies of discussion related to the project.
 
+A web-based interface to read the mailing lists is provided at https://lists.reciperadar.com/ and is hosted by the `public-inbox-httpd` program.
+
 ## Operations
 
 ### Upgrade Kubernetes Infrastructure
