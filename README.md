@@ -228,6 +228,22 @@ curl -H 'Host: frontend' localhost:30080
 curl localhost
 ```
 
+### Create public mailing lists
+
+In this step, we configure three public mailing lists:
+
+  * `reciperadar-announce` - used by the project team to provide announcements about relevant updates, features and events.
+  * `reciperadar-development` - used to co-ordinate development of the RecipeRadar software and infrastructure.
+  * `reciperadar-feedback` - used to publish feedback reported by users of the RecipeRadar service.
+
+We use the [`courier`](http://www.courier-mta.org/) email management software and the mailing list functionality included within it to receive, filter, process and deliver messages to the relevant places.
+
+Since `reciperadar-announce` and `reciperadar-feedback` have designated senders (the project team, and the RecipeRadar service on behalf of its' users), inbound mail to these lists is restricted to those senders.  In contrast, the general public can confirm subscription to `reciperadar-development` and then send messages to it.  The subscription requirement exists to filter unwanted/spam content, and in future it is hoped that this filtering can be removed.
+
+Messages to all three mailing lists are delivered to a software application called [`public-inbox`](http://www.public-inbox.org) that receives incoming emails and writes them into a [`git`](https://www.git-scm.org/) repository corresponding to each email address (mailing list address).
+
+The RecipeRadar mailing list `git` repositories are published at https://git.reciperadar.com/ and this allows users, developers, contributors, archivists and others to collect copies of discussion related to the project.
+
 ## Operations
 
 ### Upgrade Kubernetes Infrastructure
