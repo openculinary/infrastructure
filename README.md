@@ -238,7 +238,7 @@ In this step, we configure three public mailing lists:
 
 We use the [`courier`](http://www.courier-mta.org/) email management software and the mailing list functionality included within it to receive, filter, process and deliver messages to the relevant places.
 
-Since `reciperadar-announce` and `reciperadar-feedback` have designated senders (the project team, and the RecipeRadar service on behalf of its' users), inbound mail to these lists is restricted to those senders.  In contrast, the general public can confirm subscription to `reciperadar-development` and then send messages to it.  The subscription requirement exists to filter unwanted/spam content, and in future it is hoped that this filtering can be removed.
+Since `reciperadar-announce` and `reciperadar-feedback` have designated senders (the project team, and the RecipeRadar service on behalf of its' users), inbound mail to these lists is restricted to those senders.  In contrast, the general public can confirm subscription to `reciperadar-development` and then send messages to it.  The subscription requirement exists to filter unwanted/spam content, and in future it is hoped that this filtering can be removed at such time as the the volume and severity of that unwanted content becomes of negligible risk.
 
 Messages to all three mailing lists are delivered to a software application called [`public-inbox`](http://www.public-inbox.org) that receives incoming emails and writes them into a [`git`](https://www.git-scm.org/) repository corresponding to each email address (mailing list address).
 
