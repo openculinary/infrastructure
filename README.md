@@ -29,6 +29,8 @@ apt install containers-storage cri-o
 wget -qO - https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 echo 'deb http://apt.kubernetes.io/ kubernetes-xenial main' | tee /etc/apt/sources.list.d/kubernetes.list
 apt install kubeadm
+
+apt install courier-mlm courier-mta public-inbox
 ```
 
 #### Enable crio container seccomp profile
