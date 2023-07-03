@@ -246,6 +246,33 @@ The RecipeRadar mailing list `git` repositories are published at https://git.rec
 
 A web-based interface to read the mailing lists is provided at https://lists.reciperadar.com/ and is hosted by the `public-inbox-httpd` program.
 
+As a system administrator:
+
+```sh
+$ adduser --disabled-login --disabled-password --home /mnt/persistence/public-inbox --no-create-home public-inbox
+$ mkdir /mnt/persistence/public-inbox/
+$ chown public-inbox:public-inbox /mnt/persistence/public-inbox/
+
+$ vim /etc/courier/aliases/public-inbox
+...
+postmaster: <your-postmaster-alias>
+reciperadar-announce: public-inbox
+reciperadar-development: public-inbox
+reciperadar-feedback: public-inbox
+
+$ vim /etc/courier/aliasdir/.courier-default
+...
+| /usr/bin/public-inbox-mda
+```
+
+Then, as the `public-inbox` user (for example: using `su` or `sudo`):
+
+```sh
+$ couriermlm create /mnt/persistence/public-inbox/reciperadar-announce ADDRESS=reciperadar-announce@lists.reciperadar.com
+$ couriermlm create /mnt/persistence/public-inbox/reciperadar-development ADDRESS=reciperadar-development@lists.reciperadar.com
+$ couriermlm create /mnt/persistence/public-inbox/reciperadar-feedback ADDRESS=reciperadar-feedback@lists.reciperadar.com
+```
+
 ## Operations
 
 ### Upgrade Kubernetes Infrastructure
