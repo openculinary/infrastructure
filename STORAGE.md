@@ -19,7 +19,7 @@ The following disk layout is recommended:
 | I/O Path | Disk Type | Resident Services | Mountpoint | Desired Properties
 | --- | --- | --- | --- | ----
 | Performance path | Fast SSD >= 50GB | | /mnt/performance | N/A
-| | | Elasticsearch | | |
+| | | OpenSearch | | |
 | Persistence path | Reliable disks >= 1TB | | /mnt/persistence | Resizable, n+1 redundancy
 | | | PostgreSQL | | |
 | | | RabbitMQ | | |
