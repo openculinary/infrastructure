@@ -9,9 +9,9 @@ This section documents the steps required to set up a fresh RecipeRadar environm
 #### Install dependencies
 
 ```
-wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add -
-echo 'deb https://artifacts.elastic.co/packages/oss-7.x/apt stable main' | tee /etc/apt/sources.list.d/elastic-7.x.list
-apt install elasticsearch-oss
+wget -O - https://artifacts.opensearch.org/publickeys/opensearch.pgp | sudo gpg --dearmor --batch --yes --output /usr/share/keyrings/opensearch-keyring
+echo 'deb [signed-by=/usr/share/keyrings/opensearch-keyring] https://artifacts.opensearch.org/releases/bundle/opensearch/2.x/apt stable main' | tee /etc/apt/sources.list.d/opensearch-2.x.list
+apt install opensearch
 
 apt install postgresql
 
@@ -97,14 +97,15 @@ systemctl restart systemd-networkd
 
 ### Configure services
 
-#### Elasticsearch
+#### OpenSearch
 ```
-vim /etc/elasticsearch/elasticsearch.yml
+vim /etc/opensearch/opensearch.yml
 ...
 network.host: 192.168.100.1
 ...
 discovery.seed_hosts: ["192.168.100.1"]
 ...
+plugins.security.disabled: true
 script.painless.regex.enabled: false
 ```
 
@@ -165,7 +166,7 @@ cp etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg
 
 ### Start system services
 ```
-for service in systemd-networkd elasticsearch postgresql rabbitmq-server squid haproxy crio kubelet;
+for service in systemd-networkd opensearch postgresql rabbitmq-server squid haproxy crio kubelet;
 do
     systemctl enable ${service}.service
     systemctl restart ${service}.service
