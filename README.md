@@ -115,6 +115,8 @@ discovery.seed_hosts: ["192.168.100.1"]
 ...
 plugins.security.disabled: true
 script.painless.regex.enabled: false
+...
+path.repo: "/mnt/backup/opensearch"
 ```
 
 #### PostgreSQL
@@ -185,6 +187,11 @@ done
 ```
 sudo -u postgres createuser api
 sudo -u postgres createdb api
+```
+
+### Register the OpenSearch snapshot repository
+```
+curl -XPUT -H 'Content-Type: application/json' 'http://192.168.100.1:9200/_snapshot/reciperadar' --data '{"type": "fs", "settings": {"location": "/mnt/backup/opensearch"}}'
 ```
 
 ### Configure kubernetes cluster
