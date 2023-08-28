@@ -28,8 +28,9 @@ The following disk layout is recommended:
 | | | Operating system | | |
 | | | Kubernetes runtime | | |
 | | | Container storage | | |
-| Backup path | TBD | | /mnt/backup | Archived, scalable, high reliability, off-host
+| Backup path | Commodity disks >= 1TB | | /mnt/backup | Archived, scalable, high reliability, off-host
 | | | Database backups | | |
+| | | OpenSearch snapshots | | |
 | Logging path | TBD | | /mnt/logs | Archived, scalable, high reliability, off-host
 | | | Application logging | | |
 | | | Cluster logging | | |
