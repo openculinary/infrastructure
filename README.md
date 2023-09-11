@@ -20,6 +20,7 @@ echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers
 echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
 
 # Dependency installation
+apt update
 apt install haproxy postgresql rabbitmq-server squid-openssl
 apt install cri-o  # repo: kubic
 apt install opensearch  # repo: opensearch
