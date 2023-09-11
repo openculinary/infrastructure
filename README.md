@@ -10,14 +10,14 @@ This section documents the steps required to set up a fresh RecipeRadar environm
 
 ```
 # Keyrings
-wget -O - https://artifacts.opensearch.org/publickeys/opensearch.pgp | sudo gpg --dearmor --batch --yes --output /usr/share/keyrings/opensearch-keyring
-wget -qO - https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/1.28/Debian_12/Release.key | sudo apt-key add -
-wget -O - https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | sudo gpg --dearmor --batch --yes --output /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+wget -O - https://artifacts.opensearch.org/publickeys/opensearch.pgp | gpg --dearmor --batch --yes --output /usr/share/keyrings/opensearch-keyring
+wget -qO - https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/1.28/Debian_12/Release.key | apt-key add -
+wget -O - https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | gpg --dearmor --batch --yes --output /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 
 # Repository sources
 echo 'deb [signed-by=/usr/share/keyrings/opensearch-keyring] https://artifacts.opensearch.org/releases/bundle/opensearch/2.x/apt stable main' | tee /etc/apt/sources.list.d/opensearch-2.x.list
 echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/1.28/Debian_12/ /' | tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
-echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /' | tee /etc/apt/sources.list.d/kubernetes.list
 
 # Dependency installation
 apt update
