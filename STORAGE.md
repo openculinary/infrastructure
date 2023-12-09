@@ -18,16 +18,17 @@ The following disk layout is recommended:
 
 | I/O Path | Disk Type | Resident Services | Mountpoint | Desired Properties
 | --- | --- | --- | --- | ----
+| System software | Commodity disks* >= 1TB | | / | N/A
+| | | Operating system | | |
+| | | Kubernetes runtime | | |
+| Ephemeral storage | Commodity disks* >= 1TB | | /mnt/ephemeral | N/A
+| | | Container storage | | |
 | Performance path | Fast SSD >= 50GB | | /mnt/performance | N/A
 | | | OpenSearch | | |
 | Persistence path | Reliable disks >= 1TB | | /mnt/persistence | Resizable, n+1 redundancy
 | | | PostgreSQL | | |
 | | | RabbitMQ | | |
 | | | Squid | | |
-| Ephemeral storage | Commodity disks >= 1TB | | / | N/A
-| | | Operating system | | |
-| | | Kubernetes runtime | | |
-| | | Container storage | | |
 | Backup path | Commodity disks >= 1TB | | /mnt/backup | Archived, scalable, high reliability, off-host
 | | | Database backups | | |
 | | | OpenSearch snapshots | | |
@@ -35,3 +36,5 @@ The following disk layout is recommended:
 | | | Application logging | | |
 | | | Cluster logging | | |
 | | | System logging | | |
+
+* Note: 'System software' and 'Ephemeral storage' may share the same underlying storage medium.
