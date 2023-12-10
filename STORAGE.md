@@ -23,12 +23,12 @@ The following disk layout is recommended:
 | | | Kubernetes runtime | | |
 | Ephemeral storage | Commodity disks* >= 1TB | | /mnt/ephemeral | N/A
 | | | Container storage | | |
+| | | Squid | | |
 | Performance path | Fast SSD >= 50GB | | /mnt/performance | N/A
 | | | OpenSearch | | |
 | Persistence path | Reliable disks >= 1TB | | /mnt/persistence | Resizable, n+1 redundancy
 | | | PostgreSQL | | |
 | | | RabbitMQ | | |
-| | | Squid | | |
 | Backup path | Commodity disks >= 1TB | | /mnt/backup | Archived, scalable, high reliability, off-host
 | | | Database backups | | |
 | | | OpenSearch snapshots | | |
