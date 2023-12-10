@@ -36,7 +36,7 @@ seccomp_profile = "/usr/share/containers/seccomp.json"
 
 #### Configure container storage
 ```
-vim /etc/containers/storage.conf
+vim /usr/share/containers/storage.conf
 ...
 driver = "overlay"
 ...
