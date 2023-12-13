@@ -124,8 +124,8 @@ effective_cache_size = 2GB
 vim /etc/postgresql/*/main/pg_hba.conf
 ...
 # TYPE  DATABASE        USER            ADDRESS                 METHOD
-host    api             api             192.168.100.1/32        trust
-host    api             api             172.16.0.0/12           trust
+host    backend         backend         192.168.100.1/32        trust
+host    backend         backend         172.16.0.0/12           trust
 ...
 ```
 
