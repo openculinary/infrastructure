@@ -168,10 +168,10 @@ do
 done
 ```
 
-### Initialize the application database
+### Initialize the backend database
 ```
-sudo -u postgres createuser api
-sudo -u postgres createdb api
+sudo -u postgres createuser backend
+sudo -u postgres createdb backend
 ```
 
 ### Register the OpenSearch snapshot repository
