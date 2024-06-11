@@ -17,7 +17,7 @@ wget -qO - https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | gpg --dearm
 # Repository sources
 echo 'deb [signed-by=/etc/apt/keyrings/opensearch-keyring.gpg] https://artifacts.opensearch.org/releases/bundle/opensearch/2.x/apt stable main' | tee /etc/apt/sources.list.d/opensearch-2.x.list
 echo 'deb [signed-by=/etc/apt/keyrings/kubic-libcontainers-crio.gpg] https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/1.28/Debian_12/ /' | tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
-echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /' | tee /etc/apt/sources.list.d/kubernetes.list
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /' | tee /etc/apt/sources.list.d/kubernetes.list
 
 # Dependency installation
 apt update
