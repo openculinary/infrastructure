@@ -27,13 +27,6 @@ apt install opensearch  # repo: opensearch
 apt install kubeadm  # repo: kubernetes
 ```
 
-#### Enable crio container seccomp profile
-```
-vim /etc/crio/crio.conf
-...
-seccomp_profile = "/usr/share/containers/seccomp.json"
-```
-
 #### Configure container storage
 ```
 vim /usr/share/containers/storage.conf
