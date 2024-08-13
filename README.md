@@ -22,9 +22,9 @@ echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.
 # Dependency installation
 apt update
 apt install haproxy postgresql rabbitmq-server squid-openssl
-apt install cri-o  # repo: kubic
+apt install cri-o  # repo: kubernetes (addons)
 apt install opensearch  # repo: opensearch
-apt install kubeadm  # repo: kubernetes
+apt install kubeadm  # repo: kubernetes (core)
 ```
 
 #### Configure container storage
