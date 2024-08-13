@@ -12,7 +12,7 @@ This section documents the steps required to set up a fresh RecipeRadar environm
 # Keyrings
 wget -qO - https://artifacts.opensearch.org/publickeys/opensearch.pgp | gpg --dearmor --batch --yes --output /etc/apt/keyrings/opensearch-keyring.gpg
 wget -qO - https://pkgs.k8s.io/addons:/cri-o:/stable:/v1.30/deb/Release.key | gpg --dearmor --batch --yes --output /etc/apt/keyrings/cri-o-apt-keyring.gpg
-wget -qO - https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | gpg --dearmor --batch --yes --output /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+wget -qO - https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | gpg --dearmor --batch --yes --output /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 
 # Repository sources
 echo 'deb [signed-by=/etc/apt/keyrings/opensearch-keyring.gpg] https://artifacts.opensearch.org/releases/bundle/opensearch/2.x/apt stable main' | tee /etc/apt/sources.list.d/opensearch-2.x.list
