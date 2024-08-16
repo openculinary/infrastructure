@@ -316,6 +316,9 @@ $ openssl req -new -x509 -days 365 -key /etc/squid/certificates/ca.key -out /etc
 # Cleanup
 $ unset ARCHIVE_DATE
 
+# Restart squid to begin serving traffic using the updated certificate
+$ systemctl restart squid.service
+
 # Refresh the certificate material in the Kubernetes cluster
 $ kubectl delete secret generic proxy-cert
 $ kubectl create secret generic proxy-cert --from-file=/etc/squid/certificates/ca.crt
