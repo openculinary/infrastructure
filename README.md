@@ -61,6 +61,7 @@ vim /etc/systemd/network/10-dummy0.netdev
 [NetDev]
 Name=dummy0
 Kind=dummy
+MACAddress=none
 ...
 vim /etc/systemd/network/20-dummy0.network
 ...
@@ -72,14 +73,6 @@ Address=192.168.100.1/32
 Address=fe80::0100:0001/128
 DHCP=no
 IPv6AcceptRA=no
-...
-vim /etc/systemd/network/30-dummy0.link
-...
-[Match]
-OriginalName=dummy0
-
-[Link]
-MACAddressPolicy=random
 ...
 systemctl restart systemd-networkd
 ```
