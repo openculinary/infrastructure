@@ -51,4 +51,10 @@ The recommended action here is to remind the team to regularly check the status 
 
 **Operational Processes**
 
+Adding pressure to the team is unlikely to improve the quality of operations in the long-term.  In the short-term, we might encounter some expected benefits (reduction in production error metrics, ...), but enforcement of rules by means of pressure or threat tends to wear out the team -- and experience and knowledge are important to retain quality (while also bearing in mind that we should keep systems as simple as possible, to allow newcomers to gain the same level of experience).
+
+With that in mind, recommendations to improve operational processes should focus on the team's intrinsic motivations, and in particular to collect feedback about what those are and why it's important to be thoughtful and careful during upgrades.
+
+[ to be continued ]
+
 **Upgrade Processes**
