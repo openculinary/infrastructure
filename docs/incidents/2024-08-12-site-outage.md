@@ -33,6 +33,8 @@
 - A non-scalable manual container cleanup approach was introduced instead of time being taken to identify and resolve a production problem.
 - Incompatible AppArmor rules were deployed with the deployed container system/runtime.
 
+- Although the approximate root cause was that error messages during operational processes were ignored, the deeper reason for that seems to be a lax, somewhat hurried, and overconfident attitude during deployment of upgrades.  In particular, a mixture of "we can investigate that later", "it's working again, so we can take a break", and "it's a problem due to some other component, it'll probably fix itself" combined with an element of "we don't want to spend time investigating what we think is someone else's problem" contributed to the lack of investigation.
+
 ## What went well?
 
 - During recovery, the deployment-time container teardown problem was solved (albeit at some risk; outage recovery isn't a great time to upgrade dependencies).
