@@ -43,6 +43,10 @@
 
 **Alerting**
 
+We discontinued automated alerting for the service in May of Y2021, and generally the team has expressed a preference not to use automated alerting due to the potential for it to intrusively disrupt everyday life without much of a sense of opt-in (in other words: it's OK to manually check the status of the service, and to investigate if it seems unavailable, but to receive pings that have an attached or socially implied expectation of urgency can be stressful to manage).
+
+The recommended action here is to remind the team to regularly check the status of the site when they feel comfortable to; we will not add automated alerting at this time.
+
 **Operational Processes**
 
 **Upgrade Processes**
