@@ -59,6 +59,10 @@ The team would like to demonstrate that it is possible to operate an economicall
 
 The team also mentions that there is frequently a moment of recognition of "this could break the site somehow" before untested production changes.  Generally it is counter-balanced by confidence that any such problem is solvable, and often the magnitude of the operational tasks is small.  In the case of code deployments, these were previously working flawlessly.
 
+An idea that occurs to the team is to develop a operational-process-test-suite: it could be composed of important operational processes (microservice deployments, certificate rotations, ...) as integration tests, and it should assert that resource usage stays below expected bounds, and that no unexpected error/warning messages are emitted.  If we could make that lightweight enough to run following modifications to any component (microservices, dependencies, ...) or configuration setting (application, microservice or system), then we could follow a fairly scientific method of deploying tiny, atomic changes with increased confidence that each individual modification is safe.
+
+  Note: Our reliance on container-based deployments has both advantages and disadvantages related to this: it provides reasonably strong guarantees that behaviour tested correctly will behave the same in production, but it also introduces potentially-unecessary rebuild time+resource cost during deployment and testing.
+
 [ to be continued ]
 
 **Upgrade Processes**
