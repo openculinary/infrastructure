@@ -55,6 +55,8 @@ Adding pressure to the team is unlikely to improve the quality of operations in 
 
 With that in mind, recommendations to improve operational processes should focus on the team's intrinsic motivations, and in particular to collect feedback about what those are and why it's important to be thoughtful and careful during upgrades.
 
+The team would like to demonstrate that it is possible to operate an economically thrifty open source search engine that provides many of the same user benefits as well-established and well-funded for-profit enterprises, while also potentially providing additional benefits, reassurances, longevity and privacy that those enterprises appear to be unable to, based on the team's experience and observation of the past few decades of software and web technology.
+
 [ to be continued ]
 
 **Upgrade Processes**
