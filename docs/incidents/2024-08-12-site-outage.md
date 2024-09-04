@@ -57,6 +57,8 @@ With that in mind, recommendations to improve operational processes should focus
 
 The team would like to demonstrate that it is possible to operate an economically thrifty open source search engine that provides many of the same user benefits as well-established and well-funded for-profit enterprises, while also potentially providing additional benefits, reassurances, longevity and privacy that those enterprises appear to be unable to, based on the team's experience and observation of the past few decades of software and web technology.
 
+The team also mentions that there is frequently a moment of recognition of "this could break the site somehow" before untested production changes.  Generally it is counter-balanced by confidence that any such problem is solvable, and often the magnitude of the operational tasks is small.  In the case of code deployments, these were previously working flawlessly.
+
 [ to be continued ]
 
 **Upgrade Processes**
