@@ -60,3 +60,7 @@ The team suggests that there is a tension between performing careful, gradual up
 [ to be continued ]
 
 **Upgrade Processes**
+
+The team suggests that there is a tension between performing careful, gradual upgrades in a development environment, and the difficulty and elapsed-time cost of creating suitable environments that accurately replicate enough of the production environment.
+
+[ to be continued ]
