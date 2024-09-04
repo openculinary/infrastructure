@@ -55,6 +55,8 @@ Adding pressure to the team is unlikely to improve the quality of operations in 
 
 With that in mind, recommendations to improve operational processes should focus on the team's intrinsic motivations, and in particular to collect feedback about what those are and why it's important to be thoughtful and careful during upgrades.
 
+The team suggests that there is a tension between performing careful, gradual upgrades in a development environment, and the difficulty and elapsed-time cost of creating suitable environments that accurately replicate enough of the production environment.
+
 [ to be continued ]
 
 **Upgrade Processes**
