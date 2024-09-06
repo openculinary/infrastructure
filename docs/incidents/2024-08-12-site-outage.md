@@ -52,19 +52,9 @@ The recommended action here is to remind the team to regularly check the status 
 
 **Operational Processes**
 
-Adding pressure to the team is unlikely to improve the quality of operations in the long-term.  In the short-term, we might encounter some expected benefits (reduction in production error metrics, ...), but enforcement of rules by means of pressure or threat tends to wear out the team -- and experience and knowledge are important to retain quality (while also bearing in mind that we should keep systems as simple as possible, to allow newcomers to gain the same level of experience).
+The team has expressed that an aligment of personal incentives with operational process quality is the best way to achieve long-term improvements.
 
-With that in mind, recommendations to improve operational processes should focus on the team's intrinsic motivations, and in particular to collect feedback about what those are and why it's important to be thoughtful and careful during upgrades.
-
-The team would like to demonstrate that it is possible to operate an economically thrifty open source search engine that provides many of the same user benefits as well-established and well-funded for-profit enterprises, while also potentially providing additional benefits, reassurances, longevity and privacy that those enterprises appear to be unable to, based on the team's experience and observation of the past few decades of software and web technology.
-
-The team also mentions that there is frequently a moment of recognition of "this could break the site somehow" before untested production changes.  Generally it is counter-balanced by confidence that any such problem is solvable, and often the magnitude of the operational tasks is small.  In the case of code deployments, these were previously working flawlessly.
-
-An idea that occurs to the team is to develop a operational-process-test-suite: it could be composed of important operational processes (microservice deployments, certificate rotations, ...) as integration tests, and it should assert that resource usage stays below expected bounds, and that no unexpected error/warning messages are emitted.  If we could make that lightweight enough to run following modifications to any component (microservices, dependencies, ...) or configuration setting (application, microservice or system), then we could follow a fairly scientific method of deploying tiny, atomic changes with increased confidence that each individual modification is safe.
-
-  Note: Our reliance on container-based deployments has both advantages and disadvantages related to this: it provides reasonably strong guarantees that behaviour tested correctly will behave the same in production, but it also introduces potentially-unecessary rebuild time+resource cost during deployment and testing.
-
-[ to be continued ]
+The recommended action here is that the team should be reminded that they can spend as much time as they like to investigate production warning and error messages.
 
 **Upgrade Processes**
 
