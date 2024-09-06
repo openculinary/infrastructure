@@ -39,10 +39,13 @@
 ## What went well?
 
 - During recovery, the deployment-time container teardown problem was solved (albeit at some risk; outage recovery isn't a great time to upgrade dependencies).
+- The outage highlighted an unresolved problem in our container deployment process.
 
 ## Prevention Measures
 
 **Storage Configuration**
+
+The recommended action here is to leave the storage configuration as it is configured today.  If any form of logging occurs in production to the extent that it can exhaust a filesystem completely, then it is helpful for that to become known to the team at an early stage and for it to be a priority to resolve.
 
 **Alerting**
 
