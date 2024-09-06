@@ -60,4 +60,4 @@ The recommended action here is that the team should be reminded that they can sp
 
 The team suggests that there is a tension between performing careful, gradual upgrades in a development environment, and the difficulty and elapsed-time cost of creating suitable environments that accurately replicate enough of the production environment.
 
-[ to be continued ]
+There is no recommended action item here yet; the team feels that there is value in allowing some unexpected and unanticipated variance as a result of manual deployments, since this can assist with the discovery and exploration of problems that may be worth reporting and/or documenting.
