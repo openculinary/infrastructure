@@ -12,6 +12,8 @@
 
 ## What went wrong?
 
+- Essential current container images were removed from production
+
 ## What went well?
 
 ## Prevention Measures
