@@ -13,6 +13,7 @@
 ## What went wrong?
 
 - Essential current container images were removed from production.
+- Lack of system uptime monitoring caused a delay identifying the outage.
 
 ## What went well?
 
