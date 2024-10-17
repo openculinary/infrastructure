@@ -10,8 +10,8 @@
   - Deployments continue to take place.
   - System log error messages begin to accumulate rapidly -- some of these are the access-denied messages, and some relate to missing resources that have been manually removed.
 - 2024-08-10
-  - 13:05 Disk space in production is exhausted due to the container teardown/resource reclamation error messages.
-  - 13:05 Service outage occurs.
+  - 13:05 - Disk space in production is exhausted due to the container teardown/resource reclamation error messages.
+  - 13:05 - Service outage occurs.
 - 2024-08-12
   - 15:45 - The site outage is noticed by operational staff.
   - 15:51 - A reboot is initiated.
