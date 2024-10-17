@@ -16,4 +16,6 @@
 
 ## What went well?
 
+- The system's Search API remained available throughout the website outage
+
 ## Prevention Measures
