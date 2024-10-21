@@ -26,3 +26,9 @@
 There are a small number of semi-manual operational processes that our team already performs on a regular basis, such as rotation of certificates.
 
 Non-trivial processes should be documented, and stale container image cleanup is a good candidate for documentation.
+
+**Alerting**
+
+We discontinued automated alerting for the service in May of Y2021, and the team has expressed a preference not to use automated alerting.
+
+The recommended action here is to remind the team to regularly check the status of the site when they feel comfortable to; we will not add automated alerting at this time.
