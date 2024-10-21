@@ -20,3 +20,9 @@
 - The system's Search API remained available throughout the website outage.
 
 ## Prevention Measures
+
+**Operational Processes**
+
+There are a small number of semi-manual operational processes that our team already performs on a regular basis, such as rotation of certificates.
+
+Non-trivial processes should be documented, and stale container image cleanup is a good candidate for documentation.
