@@ -201,7 +201,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 for component in ingress networking services;
 do
-	kubectl apply -f ${component}
+	kubectl apply -f k8s/${component}
 done;
 ```
 
