@@ -181,7 +181,7 @@ curl -XPUT -H 'Content-Type: application/json' 'http://192.168.100.1:9200/_snaps
 
 #### Initialize cluster
 ```
-kubeadm init --apiserver-advertise-address=192.168.100.1 --pod-network-cidr=172.16.0.0/12
+kubeadm init --config k8s/kubeadm-config.yaml
 ```
 
 ```
@@ -199,7 +199,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 #### Deploy kubernetes infrastructure components
 ```
-for component in k8s/*;
+for component in ingress networking services;
 do
 	kubectl apply -f ${component}
 done;
