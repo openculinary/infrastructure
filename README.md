@@ -48,6 +48,12 @@ TODO: explain why `br_netfilter` is required
 # echo br_netfilter >> /etc/modules-load.d/kubernetes-networking.conf
 ```
 
+And, only required when using unprivileged LXC (otherwise it will be loaded automatically on-demand):
+
+```sh
+# echo fuse >> /etc/modules-load.d/containers-fuse-overlayfs.conf
+```
+
 To request immediate loading of the configured kernel modules (no reboot required), run:
 
 ```sh
