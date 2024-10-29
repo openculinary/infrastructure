@@ -19,7 +19,7 @@ We recommend adding the configuration settings to `/etc/sysctl.d/99-sysctl.conf`
 ```
 # Always required
 
-## Enable TCP/IP forwarding to allow Kubernetes pods to communicate
+## Enable IP forwarding to allow Kubernetes pods to communicate
 net.ipv4.ip_forward=1
 
 
