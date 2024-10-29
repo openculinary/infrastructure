@@ -10,6 +10,34 @@ In either case, the operating system that we currently use to configure and inst
 
 ### Configure host system
 
+The Linux `sysctl` interface provides a way to adjust behaviours of the kernel at runtime.  There are some parameters that we always need to configure, and some that we only need to configure when planning to install RecipeRadar within unprivileged LXC.
+
+We recommend adding the configuration settings to `/etc/sysctl.d/99-sysctl.conf`; the settings are:
+
+```
+# Always required
+
+## Enable TCP/IP forwarding to allow Kubernetes pods to communicate
+net.ipv4.ip_forward=1
+
+
+# Required only for unprivileged-LXC
+
+## System settings that Kubernetes will attempt to configure by default
+kernel.panic=10
+kernel.panic_on_oops=1
+vm.overcommit_memory=1
+
+## Memory settings that OpenSearch requires in order to start
+vm.max_map_count=262144
+```
+
+To request an update of the system's `sysctl` settings, run the following command:
+
+```sh
+# sysctl --system
+```
+
 #### Install dependencies
 
 ```
@@ -42,15 +70,6 @@ rootless_storage_path = "/mnt/ephemeral/containers/user-storage/"
 additionalimagestores = [
     "/mnt/ephemeral/containers/user-storage/"
 ]
-```
-
-#### Enable ipv4 packet forwarding
-```
-vim /etc/sysctl.d/99-sysctl.conf
-...
-net.ipv4.ip_forward=1
-...
-sysctl --system
 ```
 
 #### Install required kernel modules
