@@ -41,6 +41,9 @@ To request an update of the system's `sysctl` settings, run the following comman
 ```
 
 #### Enable required kernel modules
+
+TODO: explain why `br_netfilter` is required
+
 ```sh
 # echo br_netfilter >> /etc/modules-load.d/kubernetes-networking.conf
 ```
