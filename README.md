@@ -45,6 +45,12 @@ To request an update of the system's `sysctl` settings, run the following comman
 # echo br_netfilter >> /etc/modules-load.d/kubernetes-networking.conf
 ```
 
+To request that the system load the configured kernel modules, without the need to reboot, run:
+
+```sh
+# systemctl restart systemd-modules-load.service
+```
+
 #### Install dependencies
 
 ```
