@@ -4,6 +4,10 @@
 
 This section documents the steps required to set up a fresh RecipeRadar environment.
 
+The RecipeRadar environment can be installed directly onto a host system, or it can be installed within an unprivileged [LXC container](https://linuxcontainers.org/lxc/).
+
+In either case, the operating system that we currently use to configure and install the environment is [Ubuntu Linux 24.10 (`oracular`)](https://ubuntu.com/blog/canonical-releases-ubuntu-24-10-oracular-oriole).
+
 ### Configure host system
 
 #### Install dependencies
