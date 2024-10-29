@@ -10,6 +10,8 @@ In either case, the operating system that we currently use to configure and inst
 
 ### Configure host system
 
+#### Configure the Linux kernel
+
 The Linux `sysctl` interface provides a way to adjust behaviours of the kernel at runtime.  There are some parameters that we always need to configure, and some that we only need to configure when planning to install RecipeRadar within unprivileged LXC.
 
 We recommend adding the configuration settings to `/etc/sysctl.d/99-sysctl.conf`; the settings are:
