@@ -40,6 +40,11 @@ To request an update of the system's `sysctl` settings, run the following comman
 # sysctl --system
 ```
 
+#### Enable required kernel modules
+```sh
+# echo br_netfilter >> /etc/modules-load.d/kubernetes-networking.conf
+```
+
 #### Install dependencies
 
 ```
@@ -72,11 +77,6 @@ rootless_storage_path = "/mnt/ephemeral/containers/user-storage/"
 additionalimagestores = [
     "/mnt/ephemeral/containers/user-storage/"
 ]
-```
-
-#### Enable required kernel modules
-```sh
-# echo br_netfilter >> /etc/modules-load.d/kubernetes-networking.conf
 ```
 
 #### Create a persistent dummy network interface
