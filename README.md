@@ -48,7 +48,7 @@ TODO: explain why `br_netfilter` is required
 # echo br_netfilter >> /etc/modules-load.d/kubernetes-networking.conf
 ```
 
-To request that the system load the configured kernel modules, without the need to reboot, run:
+To request immediate loading of the configured kernel modules (no reboot required), run:
 
 ```sh
 # systemctl restart systemd-modules-load.service
@@ -68,7 +68,7 @@ unmanaged-devices=interface-name:cali*;
 And then restart `NetworkManager` on the host:
 
 ```sh
-sudo systemctl restart Networkmanager.service
+# sudo systemctl restart Networkmanager.service
 ```
 
 #### Install dependencies
