@@ -72,9 +72,9 @@ additionalimagestores = [
 ]
 ```
 
-#### Install required kernel modules
-```
-echo br_netfilter >> /etc/modules
+#### Enable required kernel modules
+```sh
+# echo br_netfilter >> /etc/modules-load.d/kubernetes-networking.conf
 ```
 
 #### Create a persistent dummy network interface
