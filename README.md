@@ -56,11 +56,19 @@ To request that the system load the configured kernel modules, without the need 
 
 #### Prevent the host from autoconfiguring Calico network interfaces
 
+To support the dynamic addition and removal of microservice pod instances, each of which typically requires networking capabilities, we use a network fabric management system called Calico that creates, configures and deletes network interfaces as-required.  If your host system has [`NetworkManager`](https://www.networkmanager.dev/) enabled, then there is a chance that it will emit noisy log messages about these interfaces, because it is unaware of their purpose.
+
+To filter out those logs on affected systems, create a file `/etc/NetworkManager/conf.d/calico.conf` with the following contents:
+
 ```
-vim /etc/NetworkManager/conf.d/calico.conf
-...
 [keyfile]
 unmanaged-devices=interface-name:cali*;
+```
+
+And then restart `NetworkManager` on the host:
+
+```sh
+sudo systemctl restart Networkmanager.service
 ```
 
 #### Install dependencies
