@@ -51,6 +51,7 @@ TODO: explain why `br_netfilter` is required
 And, only required when using unprivileged LXC (otherwise it will be loaded automatically on-demand):
 
 ```sh
+# apt install fuse-overlayfs
 # echo fuse >> /etc/modules-load.d/containers-fuse-overlayfs.conf
 ```
 
