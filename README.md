@@ -93,6 +93,13 @@ additionalimagestores = [
 ]
 ```
 
+#### Unprivileged LXC workaround: run CRI-O with rootless mode support
+```
+vim /etc/default/crio
+...
+_CRIO_ROOTLESS=1
+```
+
 #### Create a persistent dummy network interface
 ```
 vim /etc/systemd/network/10-dummy0.netdev
