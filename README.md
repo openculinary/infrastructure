@@ -203,7 +203,6 @@ done;
 #### Remove scheduling constraint from host node
 ```
 kubectl taint nodes $(hostname) node-role.kubernetes.io/control-plane:NoSchedule-
-kubectl taint nodes $(hostname) node-role.kubernetes.io/master:NoSchedule-
 ```
 
 #### Provide the proxy certificate to all cluster services
