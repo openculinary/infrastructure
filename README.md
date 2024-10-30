@@ -24,7 +24,7 @@ apt update
 apt install haproxy postgresql rabbitmq-server squid-openssl
 apt install cri-o  # repo: kubernetes (addons)
 apt install opensearch  # repo: opensearch
-apt install kubeadm  # repo: kubernetes (core)
+apt install kubeadm kubectl kubelet  # repo: kubernetes (core)
 ```
 
 #### Configure container storage
