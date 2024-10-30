@@ -78,7 +78,7 @@ apt update
 apt install haproxy postgresql rabbitmq-server squid-openssl
 apt install cri-o  # repo: kubernetes (addons)
 apt install opensearch  # repo: opensearch
-apt install kubeadm  # repo: kubernetes (core)
+apt install kubeadm kubectl kubelet  # repo: kubernetes (core)
 ```
 
 #### Configure container storage
@@ -123,6 +123,8 @@ systemctl restart systemd-networkd
 ```
 vim /etc/opensearch/opensearch.yml
 ...
+path.data: "/mnt/performance/opensearch"
+...
 network.host: 192.168.100.1
 ...
 cluster.initial_cluster_manager_nodes: ["192.168.100.1"]
@@ -136,6 +138,8 @@ path.repo: "/mnt/backup/opensearch"
 #### PostgreSQL
 ```
 vim /etc/postgresql/*/main/postgresql.conf
+...
+data_directory = '/mnt/persistence/postgresql/<version>'
 ...
 listen_addresses = '192.168.100.1,fe80::0100:0001%dummy0'
 ...
@@ -239,7 +243,6 @@ done;
 #### Remove scheduling constraint from host node
 ```
 kubectl taint nodes $(hostname) node-role.kubernetes.io/control-plane:NoSchedule-
-kubectl taint nodes $(hostname) node-role.kubernetes.io/master:NoSchedule-
 ```
 
 #### Provide the proxy certificate to all cluster services
