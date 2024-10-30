@@ -4,7 +4,62 @@
 
 This section documents the steps required to set up a fresh RecipeRadar environment.
 
+The RecipeRadar environment can be installed directly onto a host system, or it can be installed within an unprivileged [LXC container](https://linuxcontainers.org/lxc/).
+
+In either case, the operating system that we currently use to configure and install the environment is [Ubuntu Linux 24.10 (`oracular`)](https://ubuntu.com/blog/canonical-releases-ubuntu-24-10-oracular-oriole).
+
 ### Configure host system
+
+#### Configure the Linux kernel
+
+The Linux `sysctl` interface provides a way to adjust behaviours of the kernel at runtime.  There are some parameters that we always need to configure, and some that we only need to configure when planning to install RecipeRadar within unprivileged LXC.
+
+We recommend adding the configuration settings to `/etc/sysctl.d/50-kubernetes.conf`; the settings are:
+
+```
+# Always required
+
+## Enable IP forwarding to allow Kubernetes pods to communicate
+net.ipv4.ip_forward=1
+
+
+# Required only for unprivileged-LXC
+
+## System settings that Kubernetes will attempt to configure by default
+kernel.panic=10
+kernel.panic_on_oops=1
+vm.overcommit_memory=1
+
+## Memory settings that OpenSearch requires in order to start
+vm.max_map_count=262144
+```
+
+To request an update of the system's `sysctl` settings, run the following command:
+
+```sh
+# sysctl --system
+```
+
+#### Enable required kernel modules
+
+TODO: explain why `br_netfilter` is required
+
+```sh
+# echo br_netfilter >> /etc/modules-load.d/kubernetes-networking.conf
+```
+
+And, only required when using unprivileged LXC (otherwise it will be loaded automatically on-demand):
+
+```sh
+# apt install fuse-overlayfs
+# echo fuse >> /etc/modules-load.d/containers-fuse-overlayfs.conf
+```
+
+To request immediate loading of the configured kernel modules (no reboot required), run:
+
+```sh
+# systemctl restart systemd-modules-load.service
+```
 
 #### Install dependencies
 
@@ -31,8 +86,6 @@ apt install kubeadm kubectl kubelet  # repo: kubernetes (core)
 ```
 vim /usr/share/containers/storage.conf
 ...
-driver = "overlay"
-...
 rootless_storage_path = "/mnt/ephemeral/containers/user-storage/"
 ...
 additionalimagestores = [
@@ -40,18 +93,21 @@ additionalimagestores = [
 ]
 ```
 
-#### Enable ipv4 packet forwarding
+#### Unprivileged LXC workarounds
+
+##### Create kmsg device symlink
+
+This is not really a good idea, but it does allow the Kubernetes OOM watcher to start in the container.  Essentially, it should be watching for processes that the kernel itself is terminating due to memory pressure, and reacting to those events.  However, the kernel message buffer can contain somewhat-sensitive information about system security and state, so it's understandable and reasonable that containers do not have access to the host `kmsg`.
+
 ```
-vim /etc/sysctl.d/99-sysctl.conf
-...
-net.ipv4.ip_forward=1
-...
-sysctl --system
+ln -s /dev/console /dev/kmsg
 ```
 
-#### Install required kernel modules
+##### Run CRI-O with rootless mode support
 ```
-echo br_netfilter >> /etc/modules
+vim /etc/default/crio
+...
+_CRIO_ROOTLESS=1
 ```
 
 #### Create a persistent dummy network interface
@@ -176,7 +232,7 @@ curl -XPUT -H 'Content-Type: application/json' 'http://192.168.100.1:9200/_snaps
 
 #### Initialize cluster
 ```
-kubeadm init --apiserver-advertise-address=192.168.100.1 --pod-network-cidr=172.16.0.0/12
+kubeadm init --config k8s/kubeadm-config.yaml
 ```
 
 ```
@@ -194,9 +250,9 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 #### Deploy kubernetes infrastructure components
 ```
-for component in k8s/*;
+for component in ingress networking services;
 do
-	kubectl apply -f ${component}
+	kubectl apply -f k8s/${component}
 done;
 ```
 
