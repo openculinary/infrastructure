@@ -93,7 +93,17 @@ additionalimagestores = [
 ]
 ```
 
-#### Unprivileged LXC workaround: run CRI-O with rootless mode support
+#### Unprivileged LXC workarounds
+
+##### Create kmsg device symlink
+
+This is not really a good idea, but it does allow the Kubernetes OOM watcher to start in the container.  Essentially, it should be watching for processes that the kernel itself is terminating due to memory pressure, and reacting to those events.  However, the kernel message buffer can contain somewhat-sensitive information about system security and state, so it's understandable and reasonable that containers do not have access to the host `kmsg`.
+
+```
+ln -s /dev/console /dev/kmsg
+```
+
+##### Run CRI-O with rootless mode support
 ```
 vim /etc/default/crio
 ...
