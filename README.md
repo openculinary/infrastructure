@@ -77,15 +77,6 @@ IPv6AcceptRA=no
 systemctl restart systemd-networkd
 ```
 
-#### Prevent the host from autoconfiguring Calico network interfaces
-
-```
-vim /etc/NetworkManager/conf.d/calico.conf
-...
-[keyfile]
-unmanaged-devices=interface-name:cali*;
-```
-
 ### Configure services
 
 #### OpenSearch
