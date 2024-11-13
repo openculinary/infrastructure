@@ -380,3 +380,9 @@ $ kubectl create secret generic proxy-cert --from-file=/etc/squid/certificates/c
 ```
 
 You will also need to rebuild and deploy affected services so that their container images are updated with the latest certificate material.
+
+### Remove stale container images
+
+Over time, the collection of container images built for each deployment of a microservice can begin consuming a significant amount of storage space, despite the fact that only one version of each image is typically in active use at any given moment.
+
+This section provides a procedure to remove all except the currently-active and most-recent-previously-active container images from the local container image store.  To do so, it correlates each container image to the corresponding source control commit identifiers.
