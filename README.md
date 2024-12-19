@@ -183,10 +183,20 @@ host    backend         backend         172.16.0.0/12           trust
 vim /etc/rabbitmq/rabbitmq.conf
 ...
 loopback_users = none
+listeners.tcp.1 = 192.168.100.1:5672
+distribution.listener.interface = 127.0.0.1
 ...
 vim /etc/rabbitmq/rabbitmq-env.conf
 ...
 NODE_IP_ADDRESS=192.168.100.1
+...
+```
+
+```
+vim /usr/lib/systemd/system/epmd.socket
+...
+[Socket]
+ListenStream=127.0.0.1:4369
 ...
 ```
 
