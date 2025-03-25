@@ -19,7 +19,7 @@ spec:
     name: http
     port: 80
     protocol: TCP
-    targetPort: 30080
+    nodePort: 30080
   selector:
     app.kubernetes.io/component: controller
     app.kubernetes.io/instance: ingress-nginx
