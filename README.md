@@ -66,13 +66,13 @@ To request immediate loading of the configured kernel modules (no reboot require
 ```
 # Keyrings
 wget -qO - https://artifacts.opensearch.org/publickeys/opensearch.pgp | gpg --dearmor --batch --yes --output /etc/apt/keyrings/opensearch-keyring.gpg
-wget -qO - https://pkgs.k8s.io/addons:/cri-o:/stable:/v1.30/deb/Release.key | gpg --dearmor --batch --yes --output /etc/apt/keyrings/cri-o-apt-keyring.gpg
-wget -qO - https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | gpg --dearmor --batch --yes --output /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+wget -qO - https://pkgs.k8s.io/addons:/cri-o:/stable:/v1.32/deb/Release.key | gpg --dearmor --batch --yes --output /etc/apt/keyrings/cri-o-apt-keyring.gpg
+wget -qO - https://pkgs.k8s.io/core:/stable:/v1.32/deb/Release.key | gpg --dearmor --batch --yes --output /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 
 # Repository sources
 echo 'deb [signed-by=/etc/apt/keyrings/opensearch-keyring.gpg] https://artifacts.opensearch.org/releases/bundle/opensearch/2.x/apt stable main' | tee /etc/apt/sources.list.d/opensearch-2.x.list
-echo 'deb [signed-by=/etc/apt/keyrings/cri-o-apt-keyring.gpg] https://pkgs.k8s.io/addons:/cri-o:/stable:/v1.30/deb/ /' | tee /etc/apt/sources.list.d/cri-o.list
-echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /' | tee /etc/apt/sources.list.d/kubernetes.list
+echo 'deb [signed-by=/etc/apt/keyrings/cri-o-apt-keyring.gpg] https://pkgs.k8s.io/addons:/cri-o:/stable:/v1.32/deb/ /' | tee /etc/apt/sources.list.d/cri-o.list
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.32/deb/ /' | tee /etc/apt/sources.list.d/kubernetes.list
 
 # Dependency installation
 apt update
