@@ -125,6 +125,7 @@ rules:
   - endpoints
   - nodes
   - pods
+  - secrets
   - namespaces
   verbs:
   - list
