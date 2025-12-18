@@ -70,7 +70,7 @@ wget -qO - https://download.opensuse.org/repositories/isv:/cri-o:/stable:/v1.34/
 wget -qO - https://pkgs.k8s.io/core:/stable:/v1.34/deb/Release.key | gpg --dearmor --batch --yes --output /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 
 # Repository sources
-echo 'deb [signed-by=/etc/apt/keyrings/opensearch-keyring.gpg] https://artifacts.opensearch.org/releases/bundle/opensearch/3.x/apt stable main' | tee /etc/apt/sources.list.d/opensearch-2.x.list
+echo 'deb [signed-by=/etc/apt/keyrings/opensearch-release-keyring.gpg] https://artifacts.opensearch.org/releases/bundle/opensearch/3.x/apt stable main' | tee /etc/apt/sources.list.d/opensearch-2.x.list
 echo 'deb [signed-by=/etc/apt/keyrings/cri-o-apt-keyring.gpg] https://download.opensuse.org/repositories/isv:/cri-o:/stable:/v1.34/deb/ /' | tee /etc/apt/sources.list.d/cri-o.list
 echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.34/deb/ /' | tee /etc/apt/sources.list.d/kubernetes.list
 
