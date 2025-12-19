@@ -385,7 +385,7 @@ $ unset ARCHIVE_DATE
 $ systemctl restart squid.service
 
 # Refresh the certificate material in the Kubernetes cluster
-$ kubectl delete secret generic proxy-cert
+$ kubectl delete secret proxy-cert
 $ kubectl create secret generic proxy-cert --from-file=/etc/squid/certificates/ca.crt
 ```
 
