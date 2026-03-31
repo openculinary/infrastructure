@@ -1,3 +1,5 @@
+# Derived from: https://github.com/kubernetes/ingress-nginx/blob/0a5901f3c64f11e92e487799b8da3f00cca37515/deploy/static/provider/cloud/deploy.yaml
+---
 apiVersion: v1
 kind: Namespace
 metadata:
